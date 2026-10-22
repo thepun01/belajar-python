@@ -18,7 +18,7 @@ def read_file(file_path):
 # # Contoh menggunakan mekanisme buka tutup file ototmatis (with ... as ...)
 def write_file(file_path, content):
     try:
-        with open(file_path, "w") as file:
+        with open(file_path, "a") as file:
             file.write(content)
             print(f"Berhasil menulis ke file: {file_path}")
     except FileNotFoundError:
@@ -33,7 +33,7 @@ def write_file(file_path, content):
 # Penggunaan with ... as ... tidak terbatas pada file handling saja, tetapi juga dapat digunakan untuk mengelola sumber daya lain 
 # seperti koneksi jaringan, database, atau objek lain yang memerlukan pembersihan setelah digunakan.
 
-file_path = input("Masukkan path file yang ingin dibaca: ")
+file_path = input("Masukkan path file yang ingin dimodifikasi: ")
 content_to_write = input("Masukkan isi file yang ingin ditulis: ")
 
 write_file(file_path, content_to_write)

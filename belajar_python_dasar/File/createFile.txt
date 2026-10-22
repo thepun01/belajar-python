@@ -1,0 +1,1 @@
+Ini adalah file yang dibuat secara otomatis ketika file yang ingin dibaca atau dimodified tidak ada menggunakan mode append, selain itu menggunakan mode write (w) dan create (x) menghasilkan output yang sama.
