@@ -3,9 +3,19 @@
 print("================================")
 print("Program Daftar Belanja")
 print("================================")
+
+# input berupa list yang sudah ditentukan
 daftar_belanja = ["Apples", "Bananas", "Oranges", "Grapes", "Milk", "Bread"]
+
+# keterangan
 print("Berikut daftar belanja Anda: ")
-# print(daftar_belanja)
+
+
+# proses menggunakan perulangan for
 for item in daftar_belanja:
+    
+    # output
     print("- " + item)
+    
+
 print("================================")

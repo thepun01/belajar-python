@@ -1,1 +1,1 @@
-Ini adalah file Sample, yang dibuat oleh Punari, Sudahlah
+Ini adalah pesan yang ditulis melalui program belajar07.py
