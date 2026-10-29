@@ -3,6 +3,14 @@ import pathlib as p
 folder_path = p.Path("file")
 files = folder_path.glob("*.txt")
 
+if not folder_path.exists():
+    print(f"Folder '{folder_path}' tidak ditemukan.")
+    exit()
+
+if not any(files):
+    print(f"Tidak ada file txt di folder '{folder_path}'.")
+    exit()
+
 count_file = 0
 
 for file in files:
