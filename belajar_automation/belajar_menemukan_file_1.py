@@ -7,13 +7,14 @@ if not folder_path.exists():
     print(f"Folder '{folder_path}' tidak ditemukan.")
     exit()
 
-if not any(files):
+if not files:
     print(f"Tidak ada file txt di folder '{folder_path}'.")
     exit()
 
 count_file = 0
 
 for file in files:
+    print(file.name)
     count_file += 1
 
 print(f"Jumlah file txt di folder '{folder_path}': {count_file}")
