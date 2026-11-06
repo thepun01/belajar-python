@@ -1,6 +1,5 @@
 # Mengelompokkan file berdasarkan ekstensi
 from pathlib import Path
-from shutil import move
 import shutil
 
 folder_path = Path("latihan_2")
@@ -29,16 +28,18 @@ def move_file(source_file: Path, destination_folder: Path):
         if (destination_folder / source_file.name).exists():
             print(f"File dengan nama {source_file.name} sudah ada di folder tujuan {destination_folder},")
             print(f"Mohon ganti nama file {source_file.name} atau pindahkan file tersebut ke folder lain.")
-            exit()
+            return
         else:
-            move(str(source_file), str(destination_folder / source_file.name))
+            shutil.move(str(source_file), str(destination_folder / source_file.name))
             print(f"Berhasil memindahkan file {source_file.name} ke folder {destination_folder}")
     except FileNotFoundError as FNFError:
         print(f"Gagal memindahkan file {source_file.name}: {FNFError}")
-    except shutil.Error as shutilError:
-        print(f"Gagal memindahkan file {source_file.name}: {shutilError}")
     except PermissionError as permissionError:
         print(f"Gagal memindahkan file {source_file.name}: {permissionError}")
+    except shutil.Error as shutilError:
+        print(f"Gagal memindahkan file {source_file.name}: {shutilError}")
+    except OSError as osError:
+        print(f"Gagal memindahkan file {source_file.name}: {osError}")
 
 item_document_pattern = (".txt", ".docx", ".pdf", ".csv", ".xlsx", ".pptx")
 item_image_pattern = (".jpg", ".jpeg", ".png", ".gif")
@@ -69,6 +70,17 @@ for item in folder_path.iterdir():
             
             # Pindahkan file gambar ke subfolder berdasarkan ekstensi
             move_file(item, image_subfolder)
+        elif item.suffix.lower() in item_video_pattern:
+            # Buat folder "Videos" jika belum ada
+            video_folder = create_folder("Videos")
+            # print(video_folder)
+            
+            video_extension = item.suffix[1:].upper()
+            video_subfolder = create_subfolder(video_folder, video_extension)
+            # print(video_subfolder)
+            
+            # Pindahkan file video ke subfolder berdasarkan ekstensi
+            move_file(item, video_subfolder)
         else:
             # Buat folder "Others" jika belum ada
             others_folder = create_folder("Others")
